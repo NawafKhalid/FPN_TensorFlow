@@ -1,55 +1,30 @@
 # FPN_TensorFlow
 
-# What Is FPN (Feature Pyramid Network)?
+## What Is FPN (Feature Pyramid Network)?
 Before we talk why FPN what is Feature Pyramid Network here is the paper for [FPN](https://arxiv.org/abs/1612.03144v2) and big thanks for [Mohammad](https://www.medrxiv.org/content/early/2020/06/12/2020.06.08.20121541) because I used some help for writing the Pyramid from his code code.
 
 architecture: ![](https://cdn-images-1.medium.com/max/1000/1*D_EAjMnlR9v4LqHhEYZJLg.png)
 
 Basically rather than using single feature map which is only the bottom-up pathway in FPN and produce the output in the last layer (i.e. AlexNet, ResNet,...). The architecture as shown in the figure staring with bottom-up pathway which is the feed forward computation of the backbone conv. Bottom-up pathway produce the usual feature map from CNN. For top-down pathway producehigher resolution feature map.  And the idea over all from FPN is to combine low resolution, semantically strong feature with high resolution, semantically week featurevia  top-down  pathway  and  lateral  connection.   Lateral  connection  is  developed  for building high-level semantic feature maps at all scales. 
 
-# Why using FPN for image classification?
+## Why using FPN for image classification?
 
 
-Using FPN allow us to extract higher resolution features by upsampling spatially coarser,  and this probably not useful for simple data with nocomplex features.  
-The experiment goal is to see if the FPN is useful for image classification or not in terms of accuracy.
+- Using FPN allow us to extract higher resolution features by upsampling spatially coarser, and this       probably useful for complex features.  
 
-  - FPN is fast like single feature pyramid and more accurate.
-  - Drag and drop images (requires your Dropbox account be linked)
+  - FPN is fast like single feature pyramid and Pyramidal feature hierarchy , but more accurate..
 
 
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
+### What could be change in the architecture?
 
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
+- Backbone Network: The original paper they represents the results using ResNet as backbone network, and the process of the backbone convolutional architecture is independent so you can use any network as backbone network.
+- Features channels output: Because in the original paper all levels of the pyramid use shared classifiers/regressors as in a traditional featurized image pyramid,
+they fixed the feature dimension (numbers of channels, denoted as d) in all the feature maps.
 
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
+> Simplicity is central to our design and we have found that
+> our model is robust to many design choices. We have experimented with more sophisticated blocks (e.g., >    using multilayer residual blocks [16] as the connections) and observed
+marginally better results. Designing better connection modules is not the focus of this paper, so we opt for the simple design described above.
 
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
-
-### Tech
-
-Dillinger uses a number of open source projects to work properly:
-
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](https://breakdance.github.io/breakdance/) - HTML to Markdown converter
-* [jQuery] - duh
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
 
 ### Installation
 Every dependency should be include within the requirement file.
