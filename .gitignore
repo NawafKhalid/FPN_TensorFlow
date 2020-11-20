@@ -1,0 +1,9 @@
+.vscode
+.ipynb_checkpoints
+/ImageClassificationFPN.ipynb
+# Log files for the models
+logs
+# Folder contains all trained models
+models
+# Model weights
+weights.h5
