@@ -66,17 +66,18 @@ except:
 input_tensor = Input(X.shape[1:]) 
 print(X.shape[1:])
  
-# Load ResNet50V2, MobileNetV2, ... ImageNet pre-trained weights
+# Load ResNet101, MobileNetV2, ... ImageNet pre-trained weights
+# Visit https://keras.io/api/applications/ for more models.
 weight_model = tf.keras.applications.ResNet101(weights='imagenet', include_top=False)
 
 # Save the weights
 weight_model.save_weights('weights.h5')
 
-# Load the ResNet50V2 model without weights
+# Load the ResNet101 model without weights
 base_model = tf.keras.applications.ResNet101(weights=None, include_top=False, input_shape=tuple(X.shape[1:]))
 
 
-# Load the ImageNet weights on the ResNet50V2 model
+# Load the ImageNet weights on the ResNet101 model
 # except the first layer(because the first layer has one channel in our case)
 # .load_weights is only 
 base_model.load_weights('weights.h5', skip_mismatch=True, by_name=True)
@@ -85,7 +86,7 @@ base_model.load_weights('weights.h5', skip_mismatch=True, by_name=True)
 
 NAME = "ImageClassificationFPN" #Name to our model 
 
-full_name='ResNet50V2-FPN-fold{}'.format(NAME)
+full_name='ResNet101-FPN-fold{}'.format(NAME)
 
 # Path to save the trained models
 filepath="models/%s-{epoch:02d}-{val_accuracy:.4f}.hdf5"%full_name
@@ -118,15 +119,13 @@ base_model.summary()
 # Go check FPN original paper to see why 256, even though it can be any value.
 feature_size=256 
 
-# Layers of ResNet50V2 with different scale features
+# Layers of ResNet101 with different scale features
 # From ResNet you can find the names of layers
 # You can use base_model.summary() to see the architecture and then extract what layers you want as an output
-# from base model
 layer_names = ["conv3_block4_out", "conv4_block11_out", "conv4_block23_out", "conv5_block3_out"] 
-# layer_names = ["block_5_depthwise_relu", "block_9_depthwise_relu", "out_relu"] 
 layer_outputs = [base_model.get_layer(name).output for name in layer_names]
           
-# Features of different scales, extracted from ResNet50V2
+# Features of different scales, extracted from ResNet101
 C2, C3, C4, C5 = layer_outputs 
 
 print("Layer outputs = ", layer_outputs)
