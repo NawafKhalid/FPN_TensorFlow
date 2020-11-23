@@ -10,9 +10,9 @@ Basically rather than using single feature map which is only the bottom-up pathw
 ## Why using FPN for image classification?
 
 
-- Using FPN allow us to extract higher resolution features by upsampling spatially coarser, and this       probably useful for complex features.  
+- Using FPN allow us to extract higher resolution features by upsampling spatially coarser, and this probably useful for complex features.  
 
-- FPN is fast like single feature pyramid and Pyramidal feature hierarchy , but more accurate.
+- FPN is fast like single feature pyramid and Pyramidal feature hierarchy, but more accurate.
 
 
 ### What could be changed in the architecture?
