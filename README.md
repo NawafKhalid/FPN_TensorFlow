@@ -27,13 +27,14 @@ they fixed the feature dimension (numbers of channels, denoted as d) in all the 
 marginally better results. Designing better connection modules is not the focus of this paper, so we opt for the simple design described above.
 
 Lastly, the main idea is to take all levels, but unfortunately it is not feasible.
+
 > The principle advantage of featurizing each level of an image pyramid is that it produces
 a multi-scale feature representation in which all levels are
 semantically strong, including the high-resolution levels.
-Nevertheless, featurizing each level of an image pyramid has obvious limitations. Inference time increases considerably (e.g., by four times [11]), making this approach
+Nevertheless, featurizing each level of an image pyramid has obvious limitations. Inference time increases considerably, making this approach
 impractical for real applications. Moreover, training deep networks end-to-end on an image pyramid is infeasible in
 terms of memory, and so, if exploited, image pyramids are
-used only at test time [15, 11, 16, 35], which creates an
+used only at test time, which creates an
 inconsistency between train/test-time inference.
 
 ### Installation
