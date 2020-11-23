@@ -38,4 +38,4 @@ used only at test time, which creates an
 inconsistency between train/test-time inference.
 
 ### Installation
-Every dependency should be include within the requirements file.
+Every dependency should be included within the requirements file.
